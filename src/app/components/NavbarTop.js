@@ -6,13 +6,13 @@ import { DarkThemeToggle, Flowbite, Avatar } from 'flowbite-react';
 
 const NavbarTop = () => {
     return (
-        <div className='flex justify-between items-center lg:px-24 md:px-16 sm:px-10 px-5'>
+        <div className='flex justify-between items-center lg:px-24 md:px-16 sm:px-10 px-5 bg-orange-500'>
             <div className='py-3 '>
                 <h1 className='text-black font-semibold text-2xl'>Bachelors Home</h1>
                 <p>Solution of Basa Vara</p>
             </div>
             <div className='flex items-center gap-4 text-xl'>
-                <button className='py-2 px-5 text-[16px] border-gray-400 border'> <span>+</span> Add Home </button>
+                <button className='py-2 px-5 text-[16px] border-black border'> <span>+</span> Add Home </button>
                 <Flowbite>
 
                     <DarkThemeToggle />

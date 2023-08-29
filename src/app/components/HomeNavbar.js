@@ -4,7 +4,7 @@ import { BrandOffice, Coffee, HomeInfinity, HomeShield, HomeSignal } from 'table
 
 const HomeNavbar = () => {
     return (
-        <div className=''>
+        <div className='fixed '>
             <div className='flex flex-col gap-5 justify-center mt-10 items-center py-5'>
                 <button className='py-2 w-full  border-b-[1px] border-gray-300 hover:border-gray-500 flex justify-center items-center gap-1'>
                     <HomeSignal

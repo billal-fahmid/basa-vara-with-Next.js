@@ -19,10 +19,10 @@ export default function RootLayout({ children }) {
           <Navbar></Navbar>
           <div className='lg:px-24 md:px-16 sm:px-10 px-5'>
             <div className='flex '>
-              <div className='w-[20%] border-r-[1px] border-gray-300'>
+              <div className='w-[20%] border-r-[1px] pt-32 border-gray-300'>
               <HomeNavbar></HomeNavbar>
               </div>
-              <div className='w-[80%] '> {children}</div>
+              <div className='w-[80%] pt-32'> {children}</div>
             </div>
           </div>
         </div>
