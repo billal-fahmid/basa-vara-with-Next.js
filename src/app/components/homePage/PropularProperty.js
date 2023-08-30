@@ -7,12 +7,13 @@ const PropularProperty = () => {
     const [properties, setProperties] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/propertis')
+        fetch('api/propertis')
             .then(res => res.json())
             .then(data => setProperties(data.result))
     }, [])
 
     console.log('this all------->', properties)
+    // http://localhost:3000/
 //     https://i.ibb.co/j3Bhfvq/3d-contemporary-living-room-interior-modern-furniture-min.jpg
 // https://i.ibb.co/RC11F5x/3d-rendering-loft-scandinavian-living-room-with-working-table-bookshelf-min.jpg
 // https://i.ibb.co/7SMzSGz/bangkok-thailand-august-12-2016-beautiful-luxury-living-room-min.jpg
