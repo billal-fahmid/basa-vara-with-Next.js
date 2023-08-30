@@ -1,0 +1,31 @@
+[debug] [2023-08-30T13:27:30.093Z] ----------------------------------------------------------------------
+[debug] [2023-08-30T13:27:30.097Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\FAHMID HASAN\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-08-30T13:27:30.100Z] CLI Version:   11.29.0
+[debug] [2023-08-30T13:27:30.102Z] Platform:      win32
+[debug] [2023-08-30T13:27:30.102Z] Node Version:  v18.12.1
+[debug] [2023-08-30T13:27:30.104Z] Time:          Wed Aug 30 2023 19:27:30 GMT+0600 (Bangladesh Standard Time)
+[debug] [2023-08-30T13:27:30.104Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-30T13:27:30.350Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-30T13:27:30.351Z] > authorizing via signed-in user (billalcoom@gmail.com)
+[debug] [2023-08-30T13:27:30.352Z] [iam] checking project basa-vara-b3e1e for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-08-30T13:27:30.356Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/basa-vara-b3e1e:testIamPermissions [none]
+[debug] [2023-08-30T13:27:30.357Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/basa-vara-b3e1e:testIamPermissions x-goog-quota-user=projects/basa-vara-b3e1e
+[debug] [2023-08-30T13:27:30.357Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/basa-vara-b3e1e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-08-30T13:27:31.908Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/basa-vara-b3e1e:testIamPermissions 200
+[debug] [2023-08-30T13:27:31.908Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/basa-vara-b3e1e:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-08-30T13:27:31.910Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/basa-vara-b3e1e [none]
+[debug] [2023-08-30T13:27:32.556Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/basa-vara-b3e1e 200
+[debug] [2023-08-30T13:27:32.556Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/basa-vara-b3e1e {"projectId":"basa-vara-b3e1e","projectNumber":"1003697409974","displayName":"basa-vara","name":"projects/basa-vara-b3e1e","resources":{"hostingSite":"basa-vara-b3e1e"},"state":"ACTIVE","etag":"1_9b53e0ec-8641-40ee-bef3-61b04c5122db"}
+[debug] [2023-08-30T13:27:45.687Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/basa-vara-b3e1e/sites pageToken=&pageSize=10
+[debug] [2023-08-30T13:27:46.752Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/basa-vara-b3e1e/sites 200
+[debug] [2023-08-30T13:27:46.752Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/basa-vara-b3e1e/sites {"sites":[{"name":"projects/basa-vara-b3e1e/sites/basa-vara-b3e1e","defaultUrl":"https://basa-vara-b3e1e.web.app","appId":"1:1003697409974:web:741f1c9e5c95f8ea09bb17","type":"DEFAULT_SITE"}]}
+[debug] [2023-08-30T13:27:46.753Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1003697409974:web:741f1c9e5c95f8ea09bb17/config [none]
+[debug] [2023-08-30T13:27:48.034Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1003697409974:web:741f1c9e5c95f8ea09bb17/config 200
+[debug] [2023-08-30T13:27:48.034Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:1003697409974:web:741f1c9e5c95f8ea09bb17/config {"projectId":"basa-vara-b3e1e","appId":"1:1003697409974:web:741f1c9e5c95f8ea09bb17","storageBucket":"basa-vara-b3e1e.appspot.com","apiKey":"AIzaSyDBk5sXV-QGAaMw7Gm0O9lkWxV_8KzbD3w","authDomain":"basa-vara-b3e1e.firebaseapp.com","messagingSenderId":"1003697409974"}
+[debug] [2023-08-30T13:31:09.997Z] TypeError: Cannot read properties of null (reading 'endsWith')
+    at ɵcodegenPublicDirectory (C:\Users\FAHMID HASAN\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\next\index.js:206:56)
+    at async prepareFrameworks (C:\Users\FAHMID HASAN\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:294:13)
+    at async deploy (C:\Users\FAHMID HASAN\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
