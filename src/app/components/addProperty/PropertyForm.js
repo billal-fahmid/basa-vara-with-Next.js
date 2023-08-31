@@ -1,18 +1,10 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from "react-hook-form";
+
 
 const PropertyForm = () => {
-    const [propertyType, setPropertyType] = useState('');
-    const [division, setDivision] = useState('');
-    const [district, setDistrict] = useState('');
-    const [area, setArea] = useState('');
-    const [houseName, setHouseName] = useState('');
-    const [availableMonth, setAvailableMonth] = useState('');
-    const [propertyCategory, setPropertyCategory] = useState('');
-    const [bedrooms, setBedrooms] = useState('');
-    const [bathrooms, setBathrooms] = useState('');
-    const [price, setPrice] = useState('');
-    const [propertyImage, setPropertyImage] = useState(null);
+
 
     const divisions = [
         "Dhaka",
@@ -23,30 +15,168 @@ const PropertyForm = () => {
         "Sylhet",
         "Rangpur",
         "Mymensingh"
-      ];
+    ];
+    const allDistricts = [
+        {
+            division: "Dhaka",
+            districts: [
+                "Dhaka",
+                "Faridpur",
+                "Gazipur",
+                "Gopalganj",
+                "Kishoreganj",
+                "Madaripur",
+                "Manikganj",
+                "Munshiganj",
+                "Narayanganj",
+                "Narsingdi",
+                "Rajbari",
+                "Shariatpur",
+                "Tangail"
+            ]
+        },
+        {
+            division: "Chittagong",
+            districts: [
+                "Bandarban",
+                "Brahmanbaria",
+                "Chandpur",
+                "Chittagong",
+                "Comilla",
+                "Cox's Bazar",
+                "Feni",
+                "Khagrachari",
+                "Lakshmipur",
+                "Noakhali",
+                "Rangamati"
+            ]
+        },
+        {
+            division: "Khulna",
+            districts: [
+                "Bagerhat",
+                "Chuadanga",
+                "Jessore",
+                "Jhenaidah",
+                "Khulna",
+                "Kushtia",
+                "Magura",
+                "Meherpur",
+                "Narail",
+                "Satkhira"
+            ]
+        },
+        {
+            division: "Rajshahi",
+            districts: [
+                "Bogura",
+                "Chapainawabganj",
+                "Joypurhat",
+                "Naogaon",
+                "Natore",
+                "Pabna",
+                "Rajshahi",
+                "Sirajganj"
+            ]
+        },
+        {
+            division: "Barisal",
+            districts: [
+                "Barguna",
+                "Barisal",
+                "Bhola",
+                "Jhalokathi",
+                "Patuakhali",
+                "Pirojpur"
+            ]
+        },
+        {
+            division: "Sylhet",
+            districts: ["Habiganj", "Moulvibazar", "Sunamganj", "Sylhet"]
+        },
+        {
+            division: "Rangpur",
+            districts: [
+                "Dinajpur",
+                "Gaibandha",
+                "Kurigram",
+                "Lalmonirhat",
+                "Nilphamari",
+                "Panchagarh",
+                "Rangpur",
+                "Thakurgaon"
+            ]
+        },
+        {
+            division: "Mymensingh",
+            districts: ["Jamalpur", "Mymensingh", "Netrokona", "Sherpur"]
+        }
+    ];
+    const [districts, setDistricts] = useState([])
 
-    const handleImageChange = (e) => {
-        const imageFile = e.target.files[0];
-        setPropertyImage(imageFile);
-    };
+    const handleSelectDistricts = division => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
+        const currentDivision = allDistricts?.find(district => division === district?.division)
+        setDistricts(currentDivision?.districts)
+    }
+
+    const image_hosting_token = process.env.NEXT_PUBLIC_Image_Upload_Token;
+
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+    const { register, handleSubmit } = useForm();
+    // const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+        console.log(data.image[0])
+        const formData = new FormData();
+        formData.append('image', data.image[0])
+
+        fetch(image_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                console.log(imgData)
+                if (imgData.success) {
+                    const imgURL = imgData.data.display_url;
+                    console.log(imgURL)
+                    const { propertyType, division, district, area, houseName, availableMonth, propertyCategory, bedrooms, bathrooms, price, Summary, floorNo } = data;
+                    const newProperty = { Summary, propertyType, locationInformation: { division, district, area }, basicInfo: { bedrooms, bathrooms, floorNo }, flatDetails: { availableFrom: availableMonth, propertyType: houseName, category: propertyCategory }, price, flatImage: imgURL }
+                    console.log(newProperty)
+
+
+
+                    fetch('api/add-propertis', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(newProperty)
+                    })
+                        .then(data => {
+                            console.log(data)
+                        })
+
+
+
+                }
+            })
+
     };
 
     return (
         <div className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Add Property</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Property Type */}
                 <div className="mb-4 flex gap-10">
                     <div className='w-1/2'>
                         <label className="block font-medium mb-1">Select Type</label>
                         <select
                             className="w-full border rounded p-2"
-                            value={propertyType}
-                            onChange={(e) => setPropertyType(e.target.value)}
+                            {...register("propertyType", { required: true })}
+                        // value={propertyType}
+                        // onChange={(e) => setPropertyType(e.target.value)}
                         >
                             <option value="">Select Type</option>
                             <option value="family">Family</option>
@@ -63,7 +193,8 @@ const PropertyForm = () => {
                         <input
                             type="file"
                             accept="image/*"
-                            onChange={handleImageChange}
+                            {...register("image", { required: true })}
+                        // onChange={handleImageChange}
                         />
                     </div>
                 </div>
@@ -76,31 +207,45 @@ const PropertyForm = () => {
                         <select
                             type="text"
                             className="w-full border rounded p-2"
-                            value={division}
-                            onChange={(e) => setDivision(e.target.value)}
+                            {...register("division")}
+                            // onChange={(e) => setDivision(e.target.value)}
+                            onChange={(e) => handleSelectDistricts(e.target.value)}
                         >
-                          
-                             {
-                                divisions?.map((divi,ind)=> <option key={ind} value={divi}>{divi}</option>)
-                             }
-                            </select>
+                            <option value={''}>Division</option>
+                            {
+                                divisions?.map((divi, ind) => <option key={ind} value={divi}>{divi}</option>)
+                            }
+                        </select>
                     </div>
                     <div>
                         <label className="block font-medium mb-1">District</label>
-                        <input
+                        {/* <input
                             type="text"
                             className="w-full border rounded p-2"
                             value={district}
                             onChange={(e) => setDistrict(e.target.value)}
-                        />
+                        /> */}
+                        <select
+                            type="text"
+                            className="w-full border rounded p-2"
+                            {...register("district")}
+                        // value={district}
+                        // onChange={(e) => setDistrict(e.target.value)}
+                        >
+
+                            {
+                                districts?.map((district, ind) => <option key={ind} value={district}>{district}</option>)
+                            }
+                        </select>
                     </div>
                     <div>
                         <label className="block font-medium mb-1">Area</label>
                         <input
                             type="text"
                             className="w-full border rounded p-2"
-                            value={area}
-                            onChange={(e) => setArea(e.target.value)}
+                            {...register("area")}
+                        // value={area}
+                        // onChange={(e) => setArea(e.target.value)}
                         />
                     </div>
                     <div>
@@ -108,8 +253,9 @@ const PropertyForm = () => {
                         <input
                             type="text"
                             className="w-full border rounded p-2"
-                            value={houseName}
-                            onChange={(e) => setHouseName(e.target.value)}
+                            {...register("houseName")}
+                        // value={houseName}
+                        // onChange={(e) => setHouseName(e.target.value)}
                         />
                     </div>
                 </div>
@@ -120,11 +266,23 @@ const PropertyForm = () => {
                         <label className="block font-medium mb-1">Available Month</label>
                         <select
                             className="w-full border rounded p-2"
-                            value={availableMonth}
-                            onChange={(e) => setAvailableMonth(e.target.value)}
+                            {...register("availableMonth")}
+                        // value={availableMonth}
+                        // onChange={(e) => setAvailableMonth(e.target.value)}
                         >
                             <option value="">Select Month</option>
                             <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="october">October</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
                             {/* Add other months */}
                         </select>
                     </div>
@@ -133,8 +291,9 @@ const PropertyForm = () => {
                         <input
                             type="text"
                             className="w-full border rounded p-2"
-                            value={propertyCategory}
-                            onChange={(e) => setPropertyCategory(e.target.value)}
+                            {...register("propertyCategory")}
+                        // value={propertyCategory}
+                        // onChange={(e) => setPropertyCategory(e.target.value)}
                         />
                     </div>
                     <div>
@@ -142,8 +301,9 @@ const PropertyForm = () => {
                         <input
                             type="number"
                             className="w-full border rounded p-2"
-                            value={bedrooms}
-                            onChange={(e) => setBedrooms(e.target.value)}
+                            {...register("bedrooms")}
+                        // value={bedrooms}
+                        // onChange={(e) => setBedrooms(e.target.value)}
                         />
                     </div>
                     <div>
@@ -151,8 +311,19 @@ const PropertyForm = () => {
                         <input
                             type="number"
                             className="w-full border rounded p-2"
-                            value={bathrooms}
-                            onChange={(e) => setBathrooms(e.target.value)}
+                            {...register("bathrooms")}
+                        // value={bathrooms}
+                        // onChange={(e) => setBathrooms(e.target.value)}
+                        />
+                    </div>
+                    <div>
+                        <label className="block font-medium mb-1">Floor No</label>
+                        <input
+                            type="number"
+                            className="w-full border rounded p-2"
+                            {...register("floorNo")}
+                        // value={bathrooms}
+                        // onChange={(e) => setBathrooms(e.target.value)}
                         />
                     </div>
                 </div>
@@ -163,8 +334,19 @@ const PropertyForm = () => {
                     <input
                         type="number"
                         className="w-full border rounded p-2"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
+                        {...register("price")}
+                    // value={price}
+                    // onChange={(e) => setPrice(e.target.value)}
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block font-medium mb-1">Summary</label>
+                    <textarea
+                        type="text"
+                        className="w-full border rounded p-2"
+                        {...register("Summary")}
+                    // value={price}
+                    // onChange={(e) => setPrice(e.target.value)}
                     />
                 </div>
 
