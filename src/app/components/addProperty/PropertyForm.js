@@ -175,8 +175,7 @@ const PropertyForm = () => {
                         <select
                             className="w-full border rounded p-2"
                             {...register("propertyType", { required: true })}
-                        // value={propertyType}
-                        // onChange={(e) => setPropertyType(e.target.value)}
+                   
                         >
                             <option value="">Select Type</option>
                             <option value="family">Family</option>
@@ -194,7 +193,7 @@ const PropertyForm = () => {
                             type="file"
                             accept="image/*"
                             {...register("image", { required: true })}
-                        // onChange={handleImageChange}
+                  
                         />
                     </div>
                 </div>
@@ -219,20 +218,14 @@ const PropertyForm = () => {
                     </div>
                     <div>
                         <label className="block font-medium mb-1">District</label>
-                        {/* <input
-                            type="text"
-                            className="w-full border rounded p-2"
-                            value={district}
-                            onChange={(e) => setDistrict(e.target.value)}
-                        /> */}
+                      
                         <select
                             type="text"
                             className="w-full border rounded p-2"
                             {...register("district")}
-                        // value={district}
-                        // onChange={(e) => setDistrict(e.target.value)}
+                       
                         >
-
+                            <option value={''}>District</option>
                             {
                                 districts?.map((district, ind) => <option key={ind} value={district}>{district}</option>)
                             }
@@ -244,8 +237,7 @@ const PropertyForm = () => {
                             type="text"
                             className="w-full border rounded p-2"
                             {...register("area")}
-                        // value={area}
-                        // onChange={(e) => setArea(e.target.value)}
+                     
                         />
                     </div>
                     <div>
@@ -254,8 +246,7 @@ const PropertyForm = () => {
                             type="text"
                             className="w-full border rounded p-2"
                             {...register("houseName")}
-                        // value={houseName}
-                        // onChange={(e) => setHouseName(e.target.value)}
+                      
                         />
                     </div>
                 </div>
@@ -267,8 +258,7 @@ const PropertyForm = () => {
                         <select
                             className="w-full border rounded p-2"
                             {...register("availableMonth")}
-                        // value={availableMonth}
-                        // onChange={(e) => setAvailableMonth(e.target.value)}
+                  
                         >
                             <option value="">Select Month</option>
                             <option value="january">January</option>
@@ -292,8 +282,7 @@ const PropertyForm = () => {
                             type="text"
                             className="w-full border rounded p-2"
                             {...register("propertyCategory")}
-                        // value={propertyCategory}
-                        // onChange={(e) => setPropertyCategory(e.target.value)}
+                  
                         />
                     </div>
                     <div>
@@ -302,8 +291,7 @@ const PropertyForm = () => {
                             type="number"
                             className="w-full border rounded p-2"
                             {...register("bedrooms")}
-                        // value={bedrooms}
-                        // onChange={(e) => setBedrooms(e.target.value)}
+                    
                         />
                     </div>
                     <div>
@@ -312,8 +300,7 @@ const PropertyForm = () => {
                             type="number"
                             className="w-full border rounded p-2"
                             {...register("bathrooms")}
-                        // value={bathrooms}
-                        // onChange={(e) => setBathrooms(e.target.value)}
+                   
                         />
                     </div>
                     <div>
@@ -322,8 +309,7 @@ const PropertyForm = () => {
                             type="number"
                             className="w-full border rounded p-2"
                             {...register("floorNo")}
-                        // value={bathrooms}
-                        // onChange={(e) => setBathrooms(e.target.value)}
+                     
                         />
                     </div>
                 </div>
@@ -335,8 +321,7 @@ const PropertyForm = () => {
                         type="number"
                         className="w-full border rounded p-2"
                         {...register("price")}
-                    // value={price}
-                    // onChange={(e) => setPrice(e.target.value)}
+                 
                     />
                 </div>
                 <div className="mb-4">
@@ -345,8 +330,7 @@ const PropertyForm = () => {
                         type="text"
                         className="w-full border rounded p-2"
                         {...register("Summary")}
-                    // value={price}
-                    // onChange={(e) => setPrice(e.target.value)}
+                
                     />
                 </div>
 

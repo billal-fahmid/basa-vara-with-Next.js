@@ -14,7 +14,7 @@ const PropularProperty = () => {
 
     console.log('this all------->', properties)
     // http://localhost:3000/
-
+    // https://basa-vara-with-next-js.vercel.app/
     // https://basa-vara-with-next-fianw29gp-billal-fahmid.vercel.app/
 
 
