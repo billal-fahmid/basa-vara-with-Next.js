@@ -9,7 +9,7 @@ function usePropertyByCategory(category) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('api/propertis');
+        const response = await fetch('https://basa-vara-with-next-js.vercel.app/api/propertis');
 
         if (!response.ok) {
           throw new Error('Network response was not ok');
