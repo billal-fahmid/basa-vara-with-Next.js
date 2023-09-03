@@ -4,6 +4,8 @@ import CategoryBtn from './CategoryBtn';
 import FamilyProperty from './FamilyPropery';
 import BachelorsProperty from './BachelorsProperty';
 import OfficeProperty from './OfficeProperty';
+import HotelProperty from './HotelProperty';
+import RestaurantProperty from './RestaurantProperty';
 
 const RecentPublished = () => {
     return (
@@ -15,6 +17,10 @@ const RecentPublished = () => {
             <BachelorsProperty></BachelorsProperty>
             <CategoryBtn category={'Offices'}></CategoryBtn>
             <OfficeProperty></OfficeProperty>
+            <CategoryBtn category={'Hotel'}></CategoryBtn>
+            <HotelProperty></HotelProperty>
+            <CategoryBtn category={'Restaurant'}></CategoryBtn>
+            <RestaurantProperty></RestaurantProperty>
         </div>
     );
 };
