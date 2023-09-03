@@ -1,10 +1,13 @@
 // 'use client';
 
-import Footer from './components/Footer';
-import HomeNavbar from './components/HomeNavbar';
-import Navbar from './components/Navbar'
+// import { useState } from 'react';
+// import Footer from './components/Footer';
+// import HomeNavbar from './components/HomeNavbar';
+// import Navbar from './components/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import MainAll from './components/MainAll/MainAll';
+// import { useInView } from 'react-intersection-observer';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,23 +17,18 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  // const { ref, inView } = useInView({
+  //   /* Optional options */
+  //   threshold: 0,
+  // })
+  // console.log(inView)
+  // const [show , setShow] = useState(false)
+
+
   return (
     <html lang="en">
       <body className={inter.className}>
-       <div>
-       <div className=''>
-          <Navbar></Navbar>
-          <div className='lg:px-24 md:px-16 sm:px-10 px-5'>
-            <div className='flex '>
-              <div className='w-[20%] border-r-[1px] pt-32 border-gray-300'>
-              <HomeNavbar></HomeNavbar>
-              </div>
-              <div className='w-[80%] pt-32'> {children}</div>
-            </div>
-          </div>
-        </div>
-        <Footer></Footer>
-       </div>
+        <MainAll children={children}></MainAll>
       </body>
     </html>
   )

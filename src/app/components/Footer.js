@@ -1,9 +1,20 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
-const Footer = () => {
+
+const Footer = ({setShow}) => {
+      const { ref, inView } = useInView({
+        /* Optional options */
+        threshold: 0,
+      })
+      console.log('from main',inView)
+     useEffect(()=>{
+        setShow(inView)
+     },[inView])
+
   return (
-    <footer className="bg-[#0a7bbd] text-white py-12 overflow-hidden">
+    <footer className="bg-[#0a7bbd] text-white py-12 " id='' ref={ref}>
       <div className="container mx-auto flex flex-wrap">
         <div className="w-full sm:w-1/2 md:w-1/4 px-4 mb-6">
           <h2 className="text-2xl font-semibold mb-4">About Us</h2>
