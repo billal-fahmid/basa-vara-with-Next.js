@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 function usePropertyByCategory(category) {
-    console.log(category)
+    // console.log(ca)
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ function usePropertyByCategory(category) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch('https://basa-vara-with-next-js.vercel.app/api/propertis');
+        const response = await fetch('api/propertis');
 
         if (!response.ok) {
           throw new Error('Network response was not ok');

@@ -3,6 +3,7 @@ import SectionTitle from '../SectionTitle';
 import CategoryBtn from './CategoryBtn';
 import FamilyProperty from './FamilyPropery';
 import BachelorsProperty from './BachelorsProperty';
+import OfficeProperty from './OfficeProperty';
 
 const RecentPublished = () => {
     return (
@@ -12,6 +13,8 @@ const RecentPublished = () => {
             <FamilyProperty></FamilyProperty>
             <CategoryBtn category={'Bachelors'}></CategoryBtn>
             <BachelorsProperty></BachelorsProperty>
+            <CategoryBtn category={'Offices'}></CategoryBtn>
+            <OfficeProperty></OfficeProperty>
         </div>
     );
 };
