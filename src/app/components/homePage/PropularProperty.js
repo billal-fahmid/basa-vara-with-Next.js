@@ -7,7 +7,7 @@ const PropularProperty = () => {
     const [properties, setProperties] = useState([])
 
     useEffect(() => {
-        fetch('api/propertis')
+        fetch('https://basa-vara-with-next-js.vercel.app/api/propertis')
             .then(res => res.json())
             .then(data => setProperties(data.result))
     }, [])
