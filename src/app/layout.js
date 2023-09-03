@@ -1,4 +1,6 @@
 // 'use client';
+
+import Footer from './components/Footer';
 import HomeNavbar from './components/HomeNavbar';
 import Navbar from './components/Navbar'
 import './globals.css'
@@ -15,7 +17,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className=''>
+       <div>
+       <div className=''>
           <Navbar></Navbar>
           <div className='lg:px-24 md:px-16 sm:px-10 px-5'>
             <div className='flex '>
@@ -26,6 +29,8 @@ export default function RootLayout({ children }) {
             </div>
           </div>
         </div>
+        <Footer></Footer>
+       </div>
       </body>
     </html>
   )
