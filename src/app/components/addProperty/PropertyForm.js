@@ -120,9 +120,9 @@ const PropertyForm = () => {
         setDistricts(currentDivision?.districts)
     }
 
-    const image_hosting_token = process.env.NEXT_PUBLIC_Image_Upload_Token;
+    // const image_hosting_token = process.env.NEXT_PUBLIC_Image_Upload_Token;
 
-    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_token}`
+    const image_hosting_url = `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_Image_Upload_Token}`
     const { register, handleSubmit } = useForm();
     // const onSubmit = data => console.log(data);
     const onSubmit = data => {
