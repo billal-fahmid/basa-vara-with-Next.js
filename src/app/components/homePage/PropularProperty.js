@@ -22,7 +22,7 @@ const PropularProperty = () => {
     return (
         <div className='min-h-screen bg-gray-100 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 pb-20 gap-5 p-5'>
             {
-                properties.map(prot => <>
+                properties?.slice(0, 18).map(prot => <>
                   {  console.log(prot?.locationInformation?.division)}
                     <div>
                         <PropertyCard

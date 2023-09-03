@@ -16,6 +16,7 @@ export default function Home() {
           <SectionTitle title={'Popular Property'} subTitle={'Now You choose by your wish'}> </SectionTitle>
           <PropularProperty></PropularProperty>
           <RecentPublished></RecentPublished>
+         
         </div>
       </div>
     </main>
