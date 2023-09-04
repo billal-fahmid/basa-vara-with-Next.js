@@ -25,7 +25,7 @@ const FeedbackSlider = () => {
 
     return (
         <>
-            <div id='app' className='bg-gray-100 p-10'>
+            <div id='app' className='bg-gray-100 p-5'>
                 <Swiper
                     slidesPerView={3}
                     spaceBetween={30}
