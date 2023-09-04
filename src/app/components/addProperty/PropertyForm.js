@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
+import Swal from 'sweetalert2';
 
 
 const PropertyForm = () => {
@@ -155,6 +156,15 @@ const PropertyForm = () => {
                     })
                         .then(data => {
                             console.log(data)
+                            if(data.ok){
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Your Property Add Successfully',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  })
+                            }
                         })
 
 
