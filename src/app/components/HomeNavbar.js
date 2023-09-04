@@ -45,6 +45,20 @@ const HomeNavbar = ({show}) => {
                             color={'black'}
                         />
                         Restaurant</button>
+                    <button className='py-2 px-5 w-full justify-center border-b-[1px] border-gray-300 hover:border-gray-500 flex items-center gap-1'>
+                        <Coffee
+                            size={20}
+                            strokeWidth={1}
+                            color={'black'}
+                        />
+                        Sublet</button>
+                    <button className='py-2 px-5 w-full justify-center border-b-[1px] border-gray-300 hover:border-gray-500 flex items-center gap-1'>
+                        <Coffee
+                            size={20}
+                            strokeWidth={1}
+                            color={'black'}
+                        />
+                        Shop</button>
                 </div>
             </div>
         </section>
