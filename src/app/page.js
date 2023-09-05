@@ -3,6 +3,7 @@
 import SectionTitle from "./components/SectionTitle";
 import Banner from "./components/homePage/Banner";
 import Feedback from "./components/homePage/Feedback";
+import PopularLocation from "./components/homePage/PopularLocation";
 import PropularProperty from "./components/homePage/PropularProperty";
 import RecentPublished from "./components/homePage/RecentPublished";
 
@@ -18,6 +19,7 @@ export default function Home() {
           <PropularProperty></PropularProperty>
           <RecentPublished></RecentPublished>
           <Feedback></Feedback>
+          <PopularLocation></PopularLocation>
          
         </div>
       </div>
